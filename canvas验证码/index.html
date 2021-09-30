@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas生成验证码</title>
+</head>
+<body>
+    <canvas id="canvas" width="120" height="40"></canvas>
+    <script type="text/javascript">
+        function getYZM(select,w,h){
+            function getNum(min,max){
+                return parseInt(Math.random()*(max-min)+min)
+            }
+
+            function getColor(min,max){
+                let r = getNum(min,max);
+                let g = getNum(min,max);
+                let b = getNum(min,max);
+                return `rgb(${r},${g},${b})`
+            }
+
+            var w = w;
+            var h = h;
+            var canvas = document.querySelector(select);
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = getColor(180,230);
+            ctx.fillRect(0,0,w,h)
+
+            var pool = 'ABCDEFGHIGKLMNOPQRSTUVWXYZ1234567890';
+            for(let i =0;i<4;i++){
+                var num = pool[getNum(0,pool.length)];
+                var fs = getNum(18,40);
+                var deg = getNum(-30,30);
+                ctx.font = fs+'px Simhei';
+                ctx.textBaseline = 'top';
+                ctx.fillStyle = getColor(80,150);
+                ctx.save()
+                ctx.translate(30*i+10,5);
+                ctx.rotate(deg*Math.PI/180);
+                ctx.fillText(num,0,0);
+                ctx.restore()
+            }
+
+            for(let i=0;i<5;i++){
+                ctx.beginPath();
+                ctx.moveTo(getNum(0,w),getNum(0,h));
+                ctx.lineTo(getNum(0,w),getNum(0,h));
+                ctx.strokeStyle = getColor(100,230);
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+            for(let i =0;i<40;i++){
+                ctx.beginPath();
+                ctx.arc(getNum(0,w),getNum(0,h),1,0,2*Math.PI);
+                ctx.closePath();
+                ctx.fillStyle = getColor(150,210);
+                ctx.fill()
+            }
+        }
+
+        getYZM('#canvas',160,40)
+    </script>
+</body>
+</html>
