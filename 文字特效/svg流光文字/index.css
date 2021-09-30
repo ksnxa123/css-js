@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:rgb(2,2,75);
+}
+svg{
+    background: rgba(0,0,0,.6);
+}
+text{
+    font-size: 120px;
+    stroke: green;
+    stroke-width: 5;
+    stroke-dasharray: 0;
+}
+.text2{
+    stroke: blue;
+    animation: text2 10s infinite;
+}
+.text3{
+    stroke: yellow;
+    animation: text3 10s infinite;
+}
+.text4{
+    stroke: red;
+    animation: text4 10s infinite;
+}
+@keyframes text2{
+    0%,100%{
+        stroke-dasharray: 20;
+    }
+    25%,75%{
+        stroke-dasharray: 180;
+    }
+    50%{
+        stroke-dasharray: 220;
+    }
+}
+@keyframes text3{
+    0%,100%{
+        stroke-dasharray: 100;
+    }
+    25%,75%{
+        stroke-dasharray: 80;
+    }
+    50%{
+        stroke-dasharray: 50;
+    }
+}
+@keyframes text4{
+    0%,100%{
+        stroke-dasharray: 10;
+    }
+    25%,75%{
+        stroke-dasharray: 20;
+    }
+    50%{
+        stroke-dasharray: 50;
+    }
+}
