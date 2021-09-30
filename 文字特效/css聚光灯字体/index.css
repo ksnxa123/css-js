@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+h1{
+    color: #444;
+    font-size: 8rem;
+    position: relative;
+}
+h1:after{
+    content: 'Hello XA';
+    color: transparent;
+    position: absolute;
+    left:0;
+    top:0;
+    background: -webkit-linear-gradient(left,#F78181,#FF8000,#FFFF00,#3ADF00,#0174DF,#A901DB);
+    background-clip: text;
+    -webkit-background-clip:text;
+    clip-path: circle(100px at 0% 50%);
+    -webkit-clip-path: circle(100px at 0% 50%);
+    animation: light 5s infinite;
+}
+@keyframes light{
+    0%{
+        clip-path: circle(100px at 0% 50%);
+        -webkit-clip-path: circle(100px at 0% 50%);
+    }
+    50%{
+        clip-path: circle(100px at 100% 50%);
+        -webkit-clip-path: circle(100px at 100% 50%);
+    }
+    100%{
+        clip-path: circle(100px at 0% 50%);
+        -webkit-clip-path: circle(100px at 0% 50%);
+    }
+}
